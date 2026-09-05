@@ -1,4 +1,4 @@
-# PlantÃ£o ENEM
+# Plantão ENEM
 
 **No ar:** https://plantao-enem-site.vercel.app
 
