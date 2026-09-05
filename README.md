@@ -1,4 +1,6 @@
-# Plantão ENEM
+# PlantÃ£o ENEM
+
+**No ar:** https://plantao-enem-site.vercel.app
 
 Site de estudo pro ENEM com foco em Medicina Veterinária. Cronograma diário até
 a data da prova, provas reais do INEP com correção automática, simulados,
