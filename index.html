@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plantão ENEM — Medicina Veterinária</title>
+<meta name="description" content="Cronograma diário até a prova, provas reais do INEP com correção, simulados, redação e flashcards.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<!-- tela de entrada -->
+<section id="login" class="tela-login" hidden>
+  <form class="card pad stack" id="loginForm" style="max-width:380px;width:100%">
+    <div>
+      <div class="brand" style="margin-bottom:2px">
+        <b>Plantão ENEM</b>
+        <span>Medicina Veterinária</span>
+      </div>
+      <h1 id="loginTitulo" style="font-size:24px;letter-spacing:-.03em;margin-top:10px">Entrar</h1>
+      <p class="small muted" style="margin-top:4px">O progresso fica salvo na sua conta, então dá pra estudar no celular e continuar no computador.</p>
+    </div>
+    <label class="fl" id="campoNome" hidden>SEU NOME
+      <input type="text" id="loginNome" autocomplete="name" placeholder="como quer ser chamada">
+    </label>
+    <label class="fl">E-MAIL
+      <input type="email" id="loginEmail" autocomplete="email" required>
+    </label>
+    <label class="fl">SENHA
+      <input type="password" id="loginSenha" autocomplete="current-password" required minlength="6">
+    </label>
+    <p class="tiny" id="loginErro" role="status" style="min-height:18px"></p>
+    <button class="btn" id="loginAcao" type="submit">Entrar</button>
+    <a href="#" id="loginTroca" class="tiny" style="text-align:center">Ainda não tem conta? Criar agora</a>
+  </form>
+</section>
+
+<!-- app -->
+<div id="app" hidden>
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <b>Plantão ENEM</b>
+      <span>Medicina Veterinária</span>
+    </div>
+    <span class="sync" id="syncTag" style="margin-left:auto">carregando…</span>
+    <div class="dday">
+      <div class="l">faltam<br>para o dia 1</div>
+      <div class="n" id="dday">--</div>
+    </div>
+    <button class="ico-btn" id="themeBtn" title="Alternar tema" aria-label="Alternar tema">◐</button>
+    <button class="ico-btn" id="cfgBtn" title="Ajustes" aria-label="Ajustes">⚙</button>
+    <button class="ico-btn" id="sairBtn" title="Sair da conta" aria-label="Sair da conta">⏻</button>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="tabs-in" id="tabs"></div>
+</nav>
+
+<main class="shell">
+  <section class="view on" id="v-hoje"></section>
+  <section class="view" id="v-cronograma"></section>
+  <section class="view" id="v-simulados"></section>
+  <section class="view" id="v-provas"></section>
+  <section class="view" id="v-redacao"></section>
+  <section class="view" id="v-flashcards"></section>
+  <section class="view" id="v-materiais"></section>
+</main>
+
+<dialog id="cfg">
+  <form method="dialog" style="padding:20px;display:flex;flex-direction:column;gap:14px">
+    <h3 style="font-size:19px;letter-spacing:-.02em">Ajustes do plano</h3>
+    <label class="fl">DATA DO 1º DIA DE PROVA
+      <input type="date" id="cfgD1">
+    </label>
+    <label class="fl">DATA DO 2º DIA DE PROVA
+      <input type="date" id="cfgD2">
+    </label>
+    <label class="fl">RITMO DE ESTUDO
+      <select id="cfgRitmo">
+        <option value="2">Leve — 2 blocos por dia (~1h40)</option>
+        <option value="3">Padrão — 3 blocos por dia (~2h30)</option>
+        <option value="4">Intenso — 4 blocos por dia (~3h20)</option>
+        <option value="5">Cavalar — 5 blocos por dia (~4h10)</option>
+      </select>
+    </label>
+    <label class="fl">DIA DE FOLGA (sem conteúdo novo)
+      <select id="cfgFolga">
+        <option value="-1">Nenhum</option>
+        <option value="0">Domingo</option>
+        <option value="6">Sábado</option>
+        <option value="5">Sexta</option>
+      </select>
+    </label>
+    <p class="tiny muted">O cronograma é recalculado na hora. As marcações de dias já estudados são mantidas.</p>
+    <div class="row" style="justify-content:flex-end">
+      <button class="btn ghost" value="cancel" type="submit">Fechar</button>
+      <button class="btn" id="cfgSave" value="save" type="submit">Salvar e recalcular</button>
+    </div>
+  </form>
+</dialog>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/api.js"></script>
+<script src="js/dados.js"></script>
+<script src="js/provas.js"></script>
+<script src="js/plano.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
